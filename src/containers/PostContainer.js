@@ -7,9 +7,13 @@ class PostContainer extends Component {
     render() {
       return (
         <div>
-          <PostBanner />
-          <PostBody />
-          <PostComments />
+          <div className='row'>
+            <div className='col-md-4 col-md-offset-4'>
+              <PostBanner />
+              <PostBody />
+              <PostComments />
+            </div>
+          </div>
         </div>
       );
     };
