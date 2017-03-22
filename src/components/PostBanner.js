@@ -1,12 +1,18 @@
 import React from 'react';
 
-const PostBanner = () => {
+const PostBanner = (props) => {
   return (
     <div className=''>
-      <h2>Hello World!</h2>
-      <p className='small'>Posted by Cameron on March 21, 2017</p>
+      <h2>{props.headerText}</h2>
+      <p className='small'>Posted by {props.postedBy} on {props.postedOn}</p>
     </div>
   );
+};
+
+PostBanner.propTypes = {
+  headerText: React.PropTypes.string,
+  postedOn: React.PropTypes.string,
+  postedBy: React.PropTypes.string,
 };
 
 export default PostBanner;

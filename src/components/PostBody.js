@@ -1,11 +1,15 @@
 import React from 'react';
 
-const PostBody = () => {
+const PostBody = (props) => {
   return (
     <div className='well'>
-      <p>Lorem ipsum dolor</p>
+      <p>{props.bodyText}</p>
     </div>
   );
+};
+
+PostBody.propTypes = {
+  bodyText: React.PropTypes.string.isRequired,
 };
 
 export default PostBody;
