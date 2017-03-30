@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PostBanner from '../components/PostBanner';
 import PostBody from '../components/PostBody';
-import PostComments from '../components/PostComments';
+import PostCommentsContainer from './PostCommentsContainer';
 
 class PostContainer extends Component {
   constructor(props) {
@@ -9,13 +9,48 @@ class PostContainer extends Component {
 
     this.state = {
       areCommentsVisible: false,
+      areCommentsLoading: false,
     };
 
-    this.toggleCommentsDisplay = this.toggleCommentsDisplay.bind(this);
+    this.handleDisplayComments = this.handleDisplayComments.bind(this);
+    this.setCommentsLoading = this.setCommentsLoading.bind(this);
+    this.setCommentsVisible = this.setCommentsVisible.bind(this);
   }
 
-  toggleCommentsDisplay() {
-    this.setState({ areCommentsVisible: true });
+  handleDisplayComments() {
+    console.log('handleDisplayComments clicked');
+
+    this.setCommentsLoading();
+
+    const promise = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        if(1 === 1) {
+          resolve('Success!');
+        } else {
+          reject(Error('Something bad happened!'));
+        }
+      }, 3000);
+    });
+
+    promise.then(() => this.setCommentsVisible());
+  }
+
+  loadComments() {
+    return new Promise((resolve, reject) => {
+      this.setCommentsLoading();
+      resolve('success');
+    });
+  }
+
+  setCommentsLoading() {
+    this.setState({ areCommentsLoading: true });
+  }
+
+  setCommentsVisible() {
+    this.setState({
+      areCommentsLoading: false,
+      areCommentsVisible: true,
+    });
   }
 
   render() {
@@ -31,10 +66,11 @@ class PostContainer extends Component {
             <PostBody
               bodyText='Lorum ipsum something something something'
             />
-            <PostComments
+            <PostCommentsContainer
               numComments={2}
-              onPostCommentsMouseclick={this.toggleCommentsDisplay}
+              onPostCommentsMouseclick={this.handleDisplayComments}
               areCommentsVisible={this.state.areCommentsVisible}
+              areCommentsLoading={this.state.areCommentsLoading}
             />
           </div>
         </div>

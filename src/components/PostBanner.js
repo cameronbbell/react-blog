@@ -10,9 +10,9 @@ const PostBanner = (props) => {
 };
 
 PostBanner.propTypes = {
-  headerText: React.PropTypes.string,
-  postedOn: React.PropTypes.string,
-  postedBy: React.PropTypes.string,
+  headerText: React.PropTypes.string.isRequired,
+  postedOn: React.PropTypes.string.isRequired,
+  postedBy: React.PropTypes.string.isRequired,
 };
 
 export default PostBanner;
