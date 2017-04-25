@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
-const PostCommentsCollapsed = (props) => {
+const PostCommentsCollapsed = props => {
   return (
     <div
-      id='closed-comments-panel'
-      className='panel panel-default'
-      onMouseDown={props.onPostCommentsMouseclick}>
-      <div className='panel-body'>
+      id="closed-comments-panel"
+      className="panel panel-default"
+      onClick={() => props.onPostCommentsMouseClick()}
+    >
+      <div className="panel-body">
         Comments ({props.numComments})
       </div>
     </div>
@@ -14,7 +16,8 @@ const PostCommentsCollapsed = (props) => {
 };
 
 PostCommentsCollapsed.propTypes = {
-  onPostCommentsMouseClick: React.PropTypes.func,
+  onPostCommentsMouseClick: PropTypes.func.isRequired,
+  numComments: PropTypes.number.isRequired
 };
 
 export default PostCommentsCollapsed;
