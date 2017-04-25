@@ -1,13 +1,22 @@
-import React from 'react';
+import React from "react";
+import PostCommentsVisible from "./PostCommentsVisible";
+import ViewPostCommentsLoading from "../containers/ViewPostCommentsLoading";
+import ViewPostCommentsCollapsed from "../containers/ViewPostCommentsCollapsed";
+import PropTypes from "prop-types";
 
-const PostComments = (props) => {
-  return (
-    <div className='panel panel-default'>
-      <div className='panel-body'>
-        Comments are now visible!
-      </div>
-    </div>
-  );
+const PostComments = props => {
+  if (props.visibility === "LOADED") {
+    return <PostCommentsVisible />;
+  } else if (props.visibility === "LOADING") {
+    return <ViewPostCommentsLoading />;
+  } else {
+    return <ViewPostCommentsCollapsed />;
+  }
+};
+
+PostComments.propTypes = {
+  numComments: PropTypes.number.isRequired,
+  visibility: PropTypes.string.isRequired
 };
 
 export default PostComments;
