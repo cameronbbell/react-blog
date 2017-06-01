@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import comments from './comments';
+import { combineReducers } from "redux";
+import blogPost from "./blogPost";
 
 const blogApp = combineReducers({
-  comments
+  blogPost
 });
 
 export default blogApp;

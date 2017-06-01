@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import PostContainer from "./containers/PostContainer";
+import ViewPost from "./containers/ViewPost";
+import Row from "./components/Row";
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <PostContainer />
-      </div>
+      <Row>
+        <ViewPost />
+      </Row>
     );
   }
 }
